@@ -10,8 +10,8 @@ Homepage: <insert the upstream URL, if relevant>
 
 Package: xen-sm
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
+Depends: ${shlibs:Depends}, ${misc:Depends}, uuid-runtime
+Description: Storage backends for XenAPI
  <insert long description, indented with spaces>
 
 Package: xen-sm-doc
