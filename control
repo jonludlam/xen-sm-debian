@@ -10,7 +10,7 @@ Homepage: <insert the upstream URL, if relevant>
 
 Package: xen-sm
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, uuid-runtime, lvm2
+Depends: ${shlibs:Depends}, ${misc:Depends}, uuid-runtime, lvm2, vhd-utils, blktap
 Description: Storage backends for XenAPI
  <insert long description, indented with spaces>
 
