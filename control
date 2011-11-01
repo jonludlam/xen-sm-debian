@@ -10,7 +10,7 @@ Homepage: http://www.xen.org/products/cloudxen.html
 
 Package: xen-sm
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, uuid-runtime, lvm2, blktap-utils
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${python:Depends}, uuid-runtime, lvm2, blktap-utils
 Recommends: nfs-common
 Section: libs
 Description: Storage backends for XenAPI
