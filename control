@@ -18,9 +18,3 @@ Description: Storage backends for XenAPI
  XML-RPC based management API on top of the Xen hypervisor. xen-sm
  provides storage backend plugins for various storage types that XCP
  supports.
-
-Package: xen-sm-doc
-Architecture: all
-Depends: ${misc:Depends}
-Section: doc
-Description: Documentation for xen-sm
