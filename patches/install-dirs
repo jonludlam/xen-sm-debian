@@ -1,6 +1,6 @@
 --- a/Makefile
 +++ b/Makefile
-@@ -51,19 +51,20 @@
+@@ -55,19 +55,20 @@
  
  SM_XML := XE_SR_ERRORCODES
  
@@ -24,17 +24,17 @@
 +build: 
 +#	make -C dcopy 
  	make -C snapwatchd
+ 	make -C mpathroot
  
- .PHONY: install
-@@ -108,7 +109,7 @@
+@@ -113,7 +114,7 @@
  	mkdir -p $(SM_STAGING)$(LIBEXEC)
  	install -m 755 scripts/local-device-change $(SM_STAGING)$(LIBEXEC)
  	install -m 755 scripts/check-device-sharing $(SM_STAGING)$(LIBEXEC)
 -	$(MAKE) -C dcopy install DESTDIR=$(SM_STAGING)
 +#	$(MAKE) -C dcopy install DESTDIR=$(SM_STAGING)
  	$(MAKE) -C snapwatchd install DESTDIR=$(SM_STAGING)
+ 	$(MAKE) -C mpathroot install DESTDIR=$(SM_STAGING)
  	ln -sf $(SM_DEST)blktap2.py $(SM_STAGING)$(BIN_DEST)/blktap2
- 	mkdir -p $(SM_STAGING)$(CRON_DEST)
 --- a/snapwatchd/Makefile
 +++ b/snapwatchd/Makefile
 @@ -1,11 +1,11 @@
@@ -172,7 +172,7 @@
  from lvmcache import LVMCache
 --- a/drivers/srmetadata.py
 +++ b/drivers/srmetadata.py
-@@ -19,7 +19,7 @@
+@@ -17,7 +17,7 @@
  import metadata
  import os
  import sys
@@ -180,7 +180,7 @@
 +sys.path.insert(0,'/usr/lib/xen-common/xapi/sm/snapwatchd')
  from xslib import get_min_blk_size, open_file_for_write, open_file_for_read, \
      xs_file_write, xs_file_read, close_file
- 
+ import xs_errors
 --- a/drivers/tapdisk-pause
 +++ b/drivers/tapdisk-pause
 @@ -5,7 +5,7 @@
@@ -205,7 +205,7 @@
  		    # Now update the cache with this updated path status
 --- a/drivers/util.py
 +++ b/drivers/util.py
-@@ -969,7 +969,7 @@
+@@ -967,7 +967,7 @@
              print "Fork failed: %s (%d)" % (e.strerror,e.errno)
              sys.exit(-1)
          if (p_id == 0):
@@ -225,8 +225,8 @@
  import util
  import time
  from threading import Thread
---- a/drivers/vmprcron
-+++ b/drivers/vmprcron
+--- a/etc/cron.d/vmpr
++++ b/etc/cron.d/vmpr
 @@ -1 +1 @@
 -*/15 * * * * root /opt/xensource/sm/runvmpr
 +*/15 * * * * root /usr/lib/xen-common/xapi/sm/runvmpr
