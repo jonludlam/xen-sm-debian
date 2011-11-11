@@ -5,19 +5,14 @@ Maintainer: Jon Ludlam <jonathan.ludlam@eu.citrix.com>
 Build-Depends: debhelper (>= 8.0.0), swig, python2.6-dev, libxen-dev
 Standards-Version: 3.9.2
 Homepage: http://www.xen.org/products/cloudxen.html
-#Vcs-Git: git://git.debian.org/collab-maint/xen-sm.git
-#Vcs-Browser: http://git.debian.org/?p=collab-maint/xen-sm.git;a=summary
 
 Package: xen-sm
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, uuid-runtime, lvm2, blktap-utils
-Recommends: nfs-common
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${python:Depends}, uuid-runtime, blktap-utils
+Recommends: lvm2, nfs-common
+Section: libs
 Description: Storage backends for XenAPI
-  XCP is a server virtualization platform which provides a rich
-  XML-RPC based management API on top of the Xen hypervisor. xen-sm
-  provides storage backend plugins for various storage types that XCP
-  supports.
-
-Package: xen-sm-doc
-Architecture: all
-Description: Documentation for xen-sm
+ XCP is a server virtualization platform which provides a rich
+ XML-RPC based management API on top of the Xen hypervisor. xen-sm
+ provides storage backend plugins for various storage types that XCP
+ supports.
