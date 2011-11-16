@@ -21,13 +21,11 @@
  	install -m 755 drivers/02-vhdcleanup $(SM_STAGING)$(MASTER_SCRIPT_DEST)
  	install -m 755 drivers/lvhd-thin $(SM_STAGING)$(PLUGIN_SCRIPT_DEST)
  	install -m 755 drivers/on-slave $(SM_STAGING)$(PLUGIN_SCRIPT_DEST)
-@@ -115,13 +115,13 @@
- 	install -m 755 scripts/local-device-change $(SM_STAGING)$(LIBEXEC)
+@@ -116,12 +116,12 @@
  	install -m 755 scripts/check-device-sharing $(SM_STAGING)$(LIBEXEC)
  #	$(MAKE) -C dcopy install DESTDIR=$(SM_STAGING)
--	$(MAKE) -C snapwatchd install DESTDIR=$(SM_STAGING)
+ 	$(MAKE) -C snapwatchd install DESTDIR=$(SM_STAGING)
 -	$(MAKE) -C mpathroot install DESTDIR=$(SM_STAGING)
-+#	$(MAKE) -C snapwatchd install DESTDIR=$(SM_STAGING)
 +#	$(MAKE) -C mpathroot install DESTDIR=$(SM_STAGING)
  	ln -sf $(SM_DEST)blktap2.py $(SM_STAGING)$(BIN_DEST)/blktap2
 -	install -m 755 -d $(SM_STAGING)$(CRON_DEST)
@@ -43,13 +41,19 @@
  .PHONY: clean
 --- a/snapwatchd/Makefile
 +++ b/snapwatchd/Makefile
-@@ -21,9 +21,9 @@
+@@ -17,13 +17,13 @@
+ 	@ :
+ 
+ .PHONY: install
+-install: _xslib.so xslib.py snapwatchd
++install: _xslib.so xslib.py
  	mkdir -p $(DESTDIR)$(PREFIX)
  	install -m 644 $^ $(DESTDIR)$(PREFIX)
- 	chmod +x $(DESTDIR)$(PREFIX)/snapwatchd
+-	chmod +x $(DESTDIR)$(PREFIX)/snapwatchd
 -	mkdir -p $(DESTDIR)$(INITDIR)
 -	cp snapwatchd.init $(DESTDIR)$(INITDIR)/snapwatchd
 -	chmod +x $(DESTDIR)$(INITDIR)/snapwatchd
++	#chmod +x $(DESTDIR)$(PREFIX)/snapwatchd
 +	#mkdir -p $(DESTDIR)$(INITDIR)
 +	#cp snapwatchd.init $(DESTDIR)$(INITDIR)/snapwatchd
 +	#chmod +x $(DESTDIR)$(INITDIR)/snapwatchd
